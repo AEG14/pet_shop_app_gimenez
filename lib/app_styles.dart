@@ -10,6 +10,7 @@ const Color tGrey2 = Color(0xFFA7A7A7);
 const Color tGrey3 = Color(0xFF7C7C7C);
 const Color tGrey4 = Color(0xFFA1A1A1);
 const Color tGrey5 = Color(0xFF808080);
+const Color tGrey6 = Color(0xFF5F5F63);
 const Color tBlack = Color(0xFF2E2D2D);
 const Color tBlack2 = Color(0xFF181B19);
 const Color tBlack3 = Color(0xFF141415);

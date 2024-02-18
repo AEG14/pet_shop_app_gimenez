@@ -7,6 +7,7 @@ import '../size_config.dart';
 import '../push_animation.dart';
 import '../widgets/searchbar.dart';
 import '../consts.dart';
+import 'pet_details.dart';
 
 class StoreWidget extends StatefulWidget {
   @override
@@ -97,7 +98,11 @@ class _StoreWidgetState extends State<StoreWidget> {
 
                     return GestureDetector(
                       onTap: () {
-                        // You can add more functionality here when a pet is tapped
+                        Navigator.push(
+                          context,
+                          PageRouteUtils.createSlidePageRoute(
+                              PetDetails(pet: pet)),
+                        );
                       },
                       child: Container(
                         decoration: BoxDecoration(

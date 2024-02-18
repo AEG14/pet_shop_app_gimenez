@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import '../app_styles.dart';
+import '../consts.dart';
 import '../size_config.dart';
 import '../push_animation.dart';
 import 'navigation.dart';
+import 'dart:ui';
 
-class HomePage extends StatefulWidget {
-  @override
-  _HomePageState createState() => _HomePageState();
-}
+class PetDetails extends StatelessWidget {
+  final Pet pet;
+  PetDetails({required this.pet});
 
-class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
@@ -24,11 +24,11 @@ class _HomePageState extends State<HomePage> {
               child: Column(
                 children: [
                   Container(
-                    height: SizeConfig.blockSizeVertical! * 60,
+                    height: SizeConfig.blockSizeVertical! * 50,
                     decoration: BoxDecoration(
                       color: tGrey3,
                       image: DecorationImage(
-                        image: AssetImage('assets/images/homeImage.png'),
+                        image: AssetImage(pet.image),
                         fit: BoxFit.cover,
                       ),
                     ),
@@ -36,18 +36,33 @@ class _HomePageState extends State<HomePage> {
                 ],
               ),
             ),
+            Container(
+              padding: EdgeInsets.fromLTRB(10, 28, 10, 16),
+              decoration: BoxDecoration(
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black.withOpacity(0.2), // Shadow color
+                    spreadRadius: 2, // Spread radius
+                    blurRadius: 5, // Blur radius
+                    offset: Offset(0, 3), // Offset in the x, y direction
+                  ),
+                ],
+              ),
+              child: IconButton(
+                icon: Icon(Icons.arrow_back_ios_new_rounded),
+                color: tWhite,
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+              ),
+            ),
             Positioned(
               bottom: 0,
               left: 0,
               right: 0,
               child: Container(
-                height: SizeConfig.blockSizeVertical! * 43,
-                decoration: const BoxDecoration(
-                  borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(20),
-                      topRight: Radius.circular(20)),
-                  color: tWhite,
-                ),
+                color: tWhite,
+                height: SizeConfig.blockSizeVertical! * 50,
                 child: Padding(
                   padding: const EdgeInsets.fromLTRB(8, 0, 8, 25),
                   child: Column(
@@ -60,7 +75,7 @@ class _HomePageState extends State<HomePage> {
                       Center(
                         child: Container(
                           height: SizeConfig.blockSizeVertical! * 35,
-                          child: CarouselSliderWithIndicator(),
+                          color: tWhite,
                         ),
                       ),
                     ],
@@ -68,189 +83,89 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
             ),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class CarouselSliderWithIndicator extends StatefulWidget {
-  @override
-  _CarouselSliderWithIndicatorState createState() =>
-      _CarouselSliderWithIndicatorState();
-}
-
-class _CarouselSliderWithIndicatorState
-    extends State<CarouselSliderWithIndicator> {
-  int _current = 0;
-  final CarouselController _controller = CarouselController();
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Align(
-          alignment: Alignment.bottomCenter,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [0, 1, 2].map((index) {
-              return GestureDetector(
-                onTap: () => _controller.animateToPage(index),
-                child: Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 7),
-                  child: Image.asset(
-                    _current == index
-                        ? 'assets/images/yellowScrollCircle.png'
-                        : 'assets/images/scroll-circle.png',
-                  ),
-                ),
-              );
-            }).toList(),
-          ),
-        ),
-        CarouselSlider(
-          carouselController: _controller,
-          options: CarouselOptions(
-            autoPlay: true,
-            autoPlayInterval: Duration(seconds: 6),
-            height: SizeConfig.blockSizeVertical! * 33,
-            viewportFraction: 1.0,
-            enlargeCenterPage: false,
-            onPageChanged: (index, reason) {
-              setState(() {
-                _current = index;
-              });
-            },
-          ),
-          items: [
-            Container(
-              height: SizeConfig.blockSizeVertical! * 35,
+            Positioned(
+              bottom: SizeConfig.blockSizeVertical! * 43.2,
+              left: 0,
+              right: 0,
               child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 14.0),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    SizedBox(height: 26),
-                    Center(
-                      child: Text(
-                        'Ready to be a Fur Parent?',
-                        style: tPoppinsBold.copyWith(
-                          fontSize: SizeConfig.blockSizeHorizontal! * 6,
-                        ),
-                        textAlign: TextAlign.center,
+                padding: const EdgeInsets.symmetric(horizontal: 18.0),
+                child: Container(
+                  height: SizeConfig.blockSizeVertical! * 13,
+                  decoration: BoxDecoration(
+                    color: tWhite,
+                    boxShadow: [
+                      BoxShadow(
+                        color: Color(0x0A171439),
+                        blurRadius: 43.78,
+                        spreadRadius: 0,
+                        offset: Offset(0, 5.47),
                       ),
-                    ),
-                    SizedBox(height: 8.75),
-                    Center(
-                      child: Text(
-                        'Uncover the joy of becoming a fur parent and create lasting memories with a furry companion by your side. Are you ready to embrace the adventure of caring for a pet?',
-                        style: tPoppinsRegular.copyWith(
-                          color: tGrey4,
-                          fontSize: SizeConfig.blockSizeHorizontal! * 4.24,
-                        ),
-                        textAlign: TextAlign.center,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-            Container(
-              height: SizeConfig.blockSizeVertical! * 35,
-              color: Colors.white,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  SizedBox(height: 26),
-                  Center(
-                    child: Text(
-                      'Your One-Stop Pet Shop Experience!',
-                      style: tPoppinsBold.copyWith(
-                        fontSize: SizeConfig.blockSizeHorizontal! * 6,
-                      ),
-                      textAlign: TextAlign.center,
-                    ),
+                    ],
+                    borderRadius: BorderRadius.circular(26.27),
                   ),
-                  SizedBox(height: 8.75),
-                  Center(
-                    child: Text(
-                      'Connect with 5-star pet caregivers near you who offer boarding, walking, house sitting or day care.',
-                      style: tPoppinsRegular.copyWith(
-                        color: tGrey4,
-                        fontSize: SizeConfig.blockSizeHorizontal! * 4.24,
-                      ),
-                      textAlign: TextAlign.center,
-                    ),
-                  ),
-                  Spacer(),
-                  ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: tOrange,
-                      foregroundColor: Colors.white,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(8.76),
-                      ),
-                    ),
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        PageRouteUtils.createSlidePageRoute(NavigationWidget()),
-                      );
-                    },
-                    child: Container(
-                      width: double.infinity,
-                      padding: EdgeInsets.symmetric(
-                        vertical: 12.0,
-                      ),
-                      child: Text(
-                        'Get Started',
-                        style: tPoppinsBold.copyWith(
-                          color: tWhite,
-                          fontSize: SizeConfig.blockSizeHorizontal! * 4.24,
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(26.27),
+                    child: BackdropFilter(
+                      filter: ImageFilter.blur(sigmaX: 0.2, sigmaY: 0.2),
+                      child: Container(
+                        color: Colors
+                            .transparent, // Make sure to set a transparent color
+                        child: Padding(
+                          padding:
+                              const EdgeInsets.symmetric(horizontal: 21.89),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    pet.breed + ' ' + pet.type,
+                                    style: tPoppinsBold.copyWith(
+                                        fontSize:
+                                            SizeConfig.blockSizeHorizontal! * 5,
+                                        color: tBlack3),
+                                  ),
+                                  Text(
+                                    pet.country +
+                                        ' · ' +
+                                        pet.metersFar.toString() +
+                                        'm',
+                                    style: tPoppinsRegular.copyWith(
+                                        fontSize:
+                                            SizeConfig.blockSizeHorizontal! * 4,
+                                        color: tGrey6),
+                                  ),
+                                ],
+                              ),
+                              Spacer(),
+                              Container(
+                                height: 39.4,
+                                width: 39.4,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(8.76),
+                                  color: tGrey3,
+                                  image: DecorationImage(
+                                    image: AssetImage(
+                                        "assets/images/petImages/gender.png"),
+                                    fit: BoxFit.cover,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
-                        textAlign: TextAlign.center,
                       ),
                     ),
                   ),
-                ],
-              ),
-            ),
-            Container(
-              height: SizeConfig.blockSizeVertical! * 40,
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 14.0),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    SizedBox(height: 26),
-                    Center(
-                      child: Text(
-                        'Lots of Pets to Choose From!',
-                        style: tPoppinsBold.copyWith(
-                          fontSize: SizeConfig.blockSizeHorizontal! * 6,
-                        ),
-                        textAlign: TextAlign.center,
-                      ),
-                    ),
-                    SizedBox(height: 8.75),
-                    Center(
-                      child: Text(
-                        'Dive into a diverse realm of pets, each with its unique charm and personality. From playful pups to cuddly kittens, explore a multitude of options and find the perfect companion to brighten your days!',
-                        style: tPoppinsRegular.copyWith(
-                          color: tGrey4,
-                          fontSize: SizeConfig.blockSizeHorizontal! * 4.24,
-                        ),
-                        textAlign: TextAlign.center,
-                      ),
-                    ),
-                  ],
                 ),
               ),
             ),
           ],
         ),
-      ],
+      ),
     );
   }
 }
