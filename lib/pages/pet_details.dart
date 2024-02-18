@@ -70,12 +70,180 @@ class PetDetails extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       SizedBox(
-                        height: 30,
+                        height: SizeConfig.blockSizeVertical! * 7,
                       ),
                       Center(
                         child: Container(
-                          height: SizeConfig.blockSizeVertical! * 35,
-                          color: tWhite,
+                          height: SizeConfig.blockSizeVertical! * 39,
+                          child: Column(
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.fromLTRB(
+                                    21.89, 17.3, 21.89, 4),
+                                child: Row(
+                                  children: [
+                                    Container(
+                                      height: 26.27,
+                                      width: 26.27,
+                                      decoration: BoxDecoration(
+                                        borderRadius:
+                                            BorderRadius.circular(8.76),
+                                        image: DecorationImage(
+                                          image: AssetImage(
+                                              "assets/images/petImages/pet.png"),
+                                          fit: BoxFit.cover,
+                                        ),
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      width: 8.76,
+                                    ),
+                                    Text(
+                                      'About ' + pet.breed,
+                                      style: tPoppinsBold.copyWith(
+                                          fontSize:
+                                              SizeConfig.blockSizeHorizontal! *
+                                                  4,
+                                          color: tBlack3),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.fromLTRB(
+                                    21.89, 17.3, 21.89, 4),
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Container(
+                                      width:
+                                          SizeConfig.blockSizeHorizontal! * 27,
+                                      height: SizeConfig.blockSizeVertical! * 8,
+                                      decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(17.51),
+                                          color: Color(0x1998FF98)),
+                                      child: Padding(
+                                        padding: const EdgeInsets.fromLTRB(
+                                            10, 0, 8, 0),
+                                        child: Column(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Text(
+                                              'Weight',
+                                              style: tPoppinsRegular.copyWith(
+                                                  color: tGrey6,
+                                                  fontSize: SizeConfig
+                                                          .blockSizeHorizontal! *
+                                                      3.5),
+                                            ),
+                                            Text(
+                                              pet.weight.toString(),
+                                              style: tPoppinsSemiBold.copyWith(
+                                                  color: tOrange,
+                                                  fontSize: SizeConfig
+                                                          .blockSizeHorizontal! *
+                                                      3.5),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                    Container(
+                                      width:
+                                          SizeConfig.blockSizeHorizontal! * 27,
+                                      height: SizeConfig.blockSizeVertical! * 8,
+                                      decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(17.51),
+                                          color: Color(0x1998FF98)),
+                                      child: Padding(
+                                        padding: const EdgeInsets.fromLTRB(
+                                            10, 0, 8, 0),
+                                        child: Column(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Text(
+                                              'Height',
+                                              style: tPoppinsRegular.copyWith(
+                                                  color: tGrey6,
+                                                  fontSize: SizeConfig
+                                                          .blockSizeHorizontal! *
+                                                      3.5),
+                                            ),
+                                            Text(
+                                              pet.height.toString(),
+                                              style: tPoppinsSemiBold.copyWith(
+                                                  color: tOrange,
+                                                  fontSize: SizeConfig
+                                                          .blockSizeHorizontal! *
+                                                      3.5),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                    Container(
+                                      width:
+                                          SizeConfig.blockSizeHorizontal! * 27,
+                                      height: SizeConfig.blockSizeVertical! * 8,
+                                      decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(17.51),
+                                          color: Color(0x1998FF98)),
+                                      child: Padding(
+                                        padding: const EdgeInsets.fromLTRB(
+                                            10, 0, 8, 0),
+                                        child: Column(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Text(
+                                              'Color',
+                                              style: tPoppinsRegular.copyWith(
+                                                  color: tGrey6,
+                                                  fontSize: SizeConfig
+                                                          .blockSizeHorizontal! *
+                                                      3.5),
+                                            ),
+                                            Text(
+                                              pet.color.toString(),
+                                              style: tPoppinsSemiBold.copyWith(
+                                                  color: tOrange,
+                                                  fontSize: SizeConfig
+                                                          .blockSizeHorizontal! *
+                                                      3.5),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.fromLTRB(
+                                    21.89, 17.3, 21.89, 4),
+                                child: Text(
+                                  pet.description,
+                                  style: tPoppinsRegular.copyWith(
+                                      color: tGrey4,
+                                      fontSize:
+                                          SizeConfig.blockSizeHorizontal! *
+                                              3.5),
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                     ],
