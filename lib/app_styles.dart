@@ -23,15 +23,15 @@ const Color tMidnightBlue = Color(0xFF19202D);
 const Color tRed = Color(0xFFEF2121);
 const Color tOrange = Color(0xFFE8BE13);
 
-//text styles!!
-final tGellixBold = TextStyle(
-    fontFamily: 'Gellix', color: tMidnightBlue, fontWeight: FontWeight.w700);
-final tGellixSemiBold = TextStyle(
-    fontFamily: 'Gellix', color: tMidnightBlue, fontWeight: FontWeight.w600);
-final tGellixMedium = TextStyle(
-    fontFamily: 'Gellix', color: tMidnightBlue, fontWeight: FontWeight.w500);
-final tGellixRegular = TextStyle(
-    fontFamily: 'Gellix', color: tMidnightBlue, fontWeight: FontWeight.w400);
+// //text styles!!
+// final tGellixBold = TextStyle(
+//     fontFamily: 'Gellix', color: tMidnightBlue, fontWeight: FontWeight.w700);
+// final tGellixSemiBold = TextStyle(
+//     fontFamily: 'Gellix', color: tMidnightBlue, fontWeight: FontWeight.w600);
+// final tGellixMedium = TextStyle(
+//     fontFamily: 'Gellix', color: tMidnightBlue, fontWeight: FontWeight.w500);
+// final tGellixRegular = TextStyle(
+//     fontFamily: 'Gellix', color: tMidnightBlue, fontWeight: FontWeight.w400);
 
 final tPoppinsBold = GoogleFonts.poppins(
   fontWeight: FontWeight.w700,
